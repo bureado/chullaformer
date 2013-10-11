@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <script type="text/javascript"
+            src="http://code.jquery.com/jquery-1.4.4.js"></script>
+    <style type="text/css">
+      td { border: 1px solid black; }
+      tr:hover { background: red; color: white; }
+    </style>
+    <title>Doknos ChullaMod</title>
+</head>
+
+<body>
+  <h1>ChullaMod</h1>
+
+  <p>Hay <strong>[% count %]</strong> tweets pendientes por tweetear.</p>
+
+  <table>
+    <tr>
+      <th>Fecha y hora</th><th>Usuario</th><th>Reintentos</ht><th>Tweet</th><th>Acción</th>
+    </tr>
+  [% FOREACH tweet IN tweets %]
+    <tr>
+      <td>[% tweet.date %]</td>
+      <td>[% tweet.user %]</td>
+      <td>[% tweet.retries %]</td>
+      <td>[% tweet.status %]</td>
+      <td><a id="[% tweet.reply %]"
+             onclick="$.get('/cgi-bin/chullamod.pl?action=delete&reply=[% tweet.reply %]',
+                      function(data) {
+			$('#[% tweet.reply %]').empty();
+			$('#[% tweet.reply %]').append(data);
+			$('#[% tweet.reply %]:parent').fadeTo(1500,0,3);
+                      });">
+          Eliminar</a>
+       </td>
+    </tr>
+  [% END %]
+  </table>
+</body>
+
+</html>

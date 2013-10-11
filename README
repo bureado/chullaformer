@@ -1,0 +1,28 @@
+CREATE TABLE raw_tweets (
+	id varchar(255),
+	source varchar(255),
+	to_user_id varchar(255),
+	geo varchar(255),
+	profile_image_url varchar(255),
+	from_user_id varchar(255),
+	id_str varchar(255),
+	iso_language_code varchar(255),
+	to_user_id_str varchar(255),
+	created_at varchar(255),
+	text varchar(255),
+	from_user_id_str varchar(255),
+	from_user varchar(255),
+	user varchar(255),
+	metadata varchar(255),
+	to_user varchar(255)
+);
+
+CREATE TABLE tweets (
+	status VARCHAR(255) NOT NULL,
+	reply VARCHAR(255) NOT NULL,
+	tweeted INT(1) DEFAULT 0,
+	date VARCHAR(255),
+	user VARCHAR(255),
+	retries INT
+);
+
